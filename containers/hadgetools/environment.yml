@@ -1,0 +1,13 @@
+name: base2
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bioconda::bcftools=1.19
+  - bioconda::samtools=1.19.2
+  - bioconda::bedtools=2.31.1
+  - bioconda::umi_tools=1.1.4
+  - conda-forge::scanpy=1.9.8
+  - conda-forge::mudata=0.2.3
+  - conda-forge::pandas=2.2.0
