@@ -5,7 +5,8 @@ process samtools{
     publishDir "$params.outdir/$sampleId/$params.mode/gene_demulti/samtools", mode: 'copy'
     label 'big_mem'
     tag "${sampleId}"
-    conda "bioconda::samtools bioconda::umi_tools"
+    //conda "bioconda::samtools bioconda::umi_tools"
+    container = "quay.io/eqtlcatalogue/hadgetools:v24.01.1"
 
     input:
         tuple val(sampleId), path(bam)

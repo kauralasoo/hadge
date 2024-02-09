@@ -4,6 +4,7 @@ nextflow.enable.dsl=2
 process solo{
     publishDir "$params.outdir/$params.mode/hash_demulti/solo", mode:'copy'
     label 'small_mem'
+    container = "quay.io/eqtlcatalogue/solo_sc:v24.01.1"
     
     input:
         each rna_matrix_dir

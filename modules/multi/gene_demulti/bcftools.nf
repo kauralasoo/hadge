@@ -4,7 +4,8 @@ process bcftools{
     publishDir "$params.outdir/$sampleId/$params.mode/gene_demulti/bcftools", mode: 'copy'
     label 'big_mem'
     tag "${sampleId}"
-    conda "bioconda::bcftools=1.9"
+    //conda "bioconda::bcftools=1.9"
+    container = "quay.io/eqtlcatalogue/hadgetools:v24.01.1"
     
     input:
         tuple val(sampleId), val(vcf_list)

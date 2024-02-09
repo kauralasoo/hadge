@@ -5,7 +5,8 @@ process matchDonor{
     publishDir "$params.outdir/$sampleId/$params.mode", mode: 'copy'
     label 'big_mem'
     tag "${sampleId}"
-    conda "$projectDir/conda/donor_match.yml"
+    //conda "$projectDir/conda/donor_match.yml"
+    container = "quay.io/eqtlcatalogue/hadge_donor_match:v24.01.1"
 
     input:
         tuple val(sampleId), val(ndonor), path(barcode_whitelist), val(cell_genotype), val(vireo_parent_dir), path(demultiplexing_result)

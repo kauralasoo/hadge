@@ -5,7 +5,8 @@ process cellSNP{
     publishDir "$params.outdir/$sampleId/$params.mode/gene_demulti/cellSNP", mode: 'copy'
     label 'big_mem'
     tag "${sampleId}"
-    conda "bioconda::cellsnp-lite"
+    //conda "bioconda::cellsnp-lite"
+    container = "quay.io/biocontainers/cellsnp-lite:1.2.3--h6141fd1_2"
 
     input:
         tuple val(sampleId), path(samFile_cellSNP), path(indexFile_cellSNP), path(barcodeFile_cellSNP)

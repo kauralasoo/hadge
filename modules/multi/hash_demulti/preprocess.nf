@@ -5,7 +5,8 @@ process preprocess{
     publishDir "$params.outdir/$sampleId/$params.mode/hash_demulti/preprocess", mode:'copy'
     label 'small_mem'
 
-    conda 'conda-forge::r-seurat conda-forge::r-argparse'
+    //conda 'conda-forge::r-seurat conda-forge::r-argparse'
+    container = "quay.io/eqtlcatalogue/bff:v24.01.1"
 
     input:
         tuple val(sampleId), path(hto_matrix, stageAs: 'hto_data'), path(umi_matrix, stageAs: 'rna_data')

@@ -5,7 +5,8 @@ process vireo{
     publishDir "$params.outdir/$sampleId/$params.mode/gene_demulti/vireo", mode: 'copy'
     label 'big_mem'
     tag "${sampleId}"
-    conda "aksarkar::vireosnp bioconda::bcftools"
+    //conda "aksarkar::vireosnp bioconda::bcftools"
+    container = "quay.io/eqtlcatalogue/vireosnp:0.5.6"
 
     input:
         tuple val(sampleId), path(celldata), val(ndonor), val(donorfile)

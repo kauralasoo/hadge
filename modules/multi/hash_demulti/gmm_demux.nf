@@ -5,7 +5,8 @@ process gmm_demux{
     publishDir "$params.outdir/$sampleId/$params.mode/hash_demulti/gmm_demux", mode:'copy'
     label 'small_mem'
 
-    conda "$projectDir/conda/gmm_demux.yml"
+    //conda "$projectDir/conda/gmm_demux.yml"
+    container = "quay.io/eqtlcatalogue/gmm_demux:0.2.1.3"
     
     input:
         tuple val(sampleId), path(filtered_hto_matrix_dir), val(hto_name_gmm)

@@ -5,7 +5,8 @@ process demuxem{
     publishDir "$params.outdir/$sampleId/$params.mode/hash_demulti/demuxem", mode:'copy'
     label 'small_mem'
 
-    conda "bioconda::pegasuspy demuxEM conda-forge::scanpy" 
+    //conda "bioconda::pegasuspy demuxEM conda-forge::scanpy" 
+    container = 'quay.io/eqtlcatalogue/demuxem:0.1.7'
     
     input:
         tuple val(sampleId), path(raw_hto_matrix_dir, stageAs: "hto_data_${params.hto_matrix_demuxem}"),

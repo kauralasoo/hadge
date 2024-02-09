@@ -5,7 +5,8 @@ process scSplit{
     publishDir "$params.outdir/$sampleId/$params.mode/gene_demulti/scSplit", mode: 'copy'
     label 'big_mem'
     tag "${sampleId}"
-    conda "$projectDir/conda/scsplit.yml"
+    //conda "$projectDir/conda/scsplit.yml"
+    container = 'quay.io/eqtlcatalogue/scsplit:v24.01.1'
 
     input:
         tuple val(sampleId), path(bam), path(bai), path(vcf), path(barcode), val(num), val(vcf_known)// file function not available, use val instead

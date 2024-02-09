@@ -5,7 +5,8 @@ process hashedDrops{
     publishDir "$params.outdir/$sampleId/$params.mode/hash_demulti/hashedDrops", mode:'copy'
     label 'small_mem'
 
-    conda "conda-forge::r-seurat conda-forge::r-argparse bioconda::bioconductor-dropletutils"
+    //conda "conda-forge::r-seurat conda-forge::r-argparse bioconda::bioconductor-dropletutils"
+    container = "quay.io/eqtlcatalogue/bff:v24.01.1"
     
     input:
         tuple val(sampleId), path(raw_hto_matrix_dir)

@@ -5,7 +5,8 @@ process bff{
     publishDir "$params.outdir/$sampleId/$params.mode/hash_demulti/bff", mode:'copy'
     label 'small_mem'
 
-    conda "$projectDir/conda/bff.yml"
+    //conda "$projectDir/conda/bff.yml"
+    container = "quay.io/eqtlcatalogue/bff:v24.01.1"
 
     input:
 

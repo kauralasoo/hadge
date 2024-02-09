@@ -1,7 +1,8 @@
 process create_single_chanel_input{
     
     tag "${sampleId}"
-    conda "$projectDir/conda/scsplit.yml"
+    //conda "$projectDir/conda/scsplit.yml"
+    container = 'quay.io/eqtlcatalogue/scsplit:v24.01.1'
 
     input:
             val sample_name

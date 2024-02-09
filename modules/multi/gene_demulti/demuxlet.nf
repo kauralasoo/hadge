@@ -5,7 +5,8 @@ nextflow.enable.dsl=2
 
 process subset_bam_and_sort_vcf_based_on_reference{
     label 'small_mem'
-    conda "bioconda::samtools=1.19.2 bedtools bcftools=1.19"
+    //conda "bioconda::samtools=1.19.2 bedtools bcftools=1.19"
+    container = "quay.io/eqtlcatalogue/hadgetools:v24.01.1"
     tag "${sampleId}"
     input:
         tuple val(sampleId), path(sam), path(sam_index), path(barcodes), val(vcf)
@@ -25,7 +26,8 @@ process demuxlet {
     publishDir "$params.outdir/$sampleId/$params.mode/gene_demulti/demuxlet", mode: 'copy'
     label 'small_mem'
     tag "${sampleId}"
-    conda "bioconda::popscle"
+    //conda "bioconda::popscle"
+    container = "quay.io/biocontainers/popscle:0.1beta--h985387c_1"
 
     input:
         tuple val(sampleId), path(sam), path(sam_index), path(group_list), val(vcf_donor)

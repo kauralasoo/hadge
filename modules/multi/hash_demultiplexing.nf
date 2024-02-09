@@ -14,7 +14,8 @@ process summary{
     publishDir "$params.outdir/$sampleId/$params.mode/hash_demulti", mode: 'copy'
     label 'small_mem'
         
-    conda "pandas scanpy mudata"
+    //conda "pandas scanpy mudata"
+    container = "quay.io/eqtlcatalogue/hadgetools:v24.01.1"
 
     input:
         tuple(val(sampleId), path(hto_matrix, stageAs: 'hto_data'), path(rna_matrix, stageAs: 'rna_data'), val(hashedDrops_result), val(demuxem_result), val(hashsolo_result), val(multiseq_result), val(htodemux_result), val(gmmDemux_result), val(bff_result))

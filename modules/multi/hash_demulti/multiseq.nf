@@ -5,7 +5,8 @@ process multi_seq{
     publishDir "$params.outdir/${seurat_object.name.tokenize( '_' )[1]}/$params.mode/hash_demulti/multiseq", mode: 'copy'
     label 'small_mem'
 
-    conda 'conda-forge::r-seurat conda-forge::r-argparse'
+    //conda 'conda-forge::r-seurat conda-forge::r-argparse'
+    container = "quay.io/eqtlcatalogue/bff:v24.01.1"
 
     input:
         each seurat_object

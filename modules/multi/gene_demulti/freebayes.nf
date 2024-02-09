@@ -5,7 +5,8 @@ process freebayes{
     publishDir "$params.outdir/$sampleId/$params.mode/gene_demulti/freebayes", mode: 'copy'
     label 'big_mem'
     tag "${sampleId}"
-    conda "bioconda::freebayes=1.2"
+    //conda "bioconda::freebayes=1.2"
+    container = "quay.io/biocontainers/freebayes:1.2.0--py35h82df9c4_2"
     
     input:
         tuple val(sampleId), path(bam_freebayes), path(bai_freebayes)
